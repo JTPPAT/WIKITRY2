@@ -1,0 +1,72 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet">
+        <!-- UIkit CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/css/uikit.min.css" />
+
+<!-- UIkit JS -->
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/js/uikit-icons.min.js"></script>
+
+    </head>
+    <body>
+
+        <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
+            <nav class="uk-navbar-container" uk-navbar="dropbar: false;" style="position: relative; z-index: 980;">
+        
+
+        <nav class="uk-navbar-container uk-margin" uk-navbar>
+            <div class="uk-navbar-left">
+        
+                <a class="uk-navbar-item uk-logo" href="{% url 'index' %}" >Wiki</a>
+        
+                
+        
+                <div class="uk-navbar-item">
+                    <div><a href="{% url 'index' %}">Home</a></div>
+                </div>
+                
+                <div class="uk-navbar-item">
+                    <div><a href="{% url 'index' %}">Random Page</a></div>
+                </div>
+
+                <div class="uk-navbar-item">
+                    <div><a href="{% url 'index' %}">Create New Page</a></div>
+                </div>
+                <div class="uk-navbar-item">
+                    <form action="javascript:void(0)">
+                        <input  class="uk-input uk-form-width-medium" class="uk-input uk-form-width-small" type="text" placeholder="Search Encyclopedia" name="q">
+                        <button  type= submit class="uk-button uk-button-default">Submit</button>
+                    </form>
+                </div>
+        
+            </div>
+        </div>
+        </nav>
+
+        <div class="uk-child-width-3-4@M uk-light" uk-grid>
+            <div>
+                <div class="uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle" style="background-image:{% static "encyclopedia/wikiimage.jpg" %}";">
+                    
+                </div>
+            </div>
+
+      
+              
+                {% block nav %}
+                {% endblock %}
+            </div>
+            <div class="main col-lg-10 col-md-9">
+                {% block body %}
+                {% endblock %}
+            </div>
+        </div>
+
+    </body>
+</html>
