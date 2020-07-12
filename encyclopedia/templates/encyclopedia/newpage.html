@@ -8,13 +8,48 @@
 <!-- UIkit JS -->
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/js/uikit.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/js/uikit-icons.min.js"></script>
+<link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet">
 </head>
+
 
 <body>
 
+    <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
+        <nav class="uk-navbar-container" uk-navbar="dropbar: false;" style="position: relative; z-index: 980;">
+    
+
+    <nav class="uk-navbar-container uk-margin" uk-navbar>
+        <div class="uk-navbar-left">
+    
+            <a class="uk-navbar-item uk-logo" href="{% url 'index' %}" >Wiki</a>
+    
+            
+    
+            <div class="uk-navbar-item">
+                <div><a href="{% url 'index' %}">Home</a></div>
+            </div>
+            
+            <div class="uk-navbar-item">
+                <div><a href="{% url 'index' %}">Random Page</a></div>
+            </div>
+
+            <div class="uk-navbar-item">
+                <div><a href="{% url 'newpage' %}">Create New Page</a></div>
+            </div>
+            <div class="uk-navbar-item">
+                <form action="javascript:void(0)">
+                    <input  class="uk-input uk-form-width-medium" class="uk-input uk-form-width-small" type="text" placeholder="Search Encyclopedia" name="q">
+                    <button  type= submit class="uk-button uk-button-default">Submit</button>
+                </form>
+            </div>
+    
+        </div>
+    </div>
+    </nav>
     <form action="/newpage" method= "post">
         <fieldset class="uk-fieldset">
     
+            {% csrf_token %}
             
     <h1>Create a new page</h1>
             <div class="uk-margin">
@@ -40,6 +75,17 @@
     </form>
 
 
+    {% for messages in messages %}
+
+    <div class="alert alert-success">
+
+        <a class="close" data-dismiss="alert">This page already exists</a>
+
+            {{message}}
+
+    </div>
+
+{% endfor %}
 </body>
 
 </html>

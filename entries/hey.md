@@ -1,0 +1,1 @@
+a word used to greet

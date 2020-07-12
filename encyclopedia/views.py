@@ -1,5 +1,8 @@
 from django.shortcuts import render
+from django.contrib import messages
+from django.shortcuts import redirect
 import markdown2
+import random
 from . import util
 
 
@@ -19,20 +22,20 @@ def newpage(request):
     if request.method == "POST":
         header = request.POST.get("header")
         content = request.POST.get("content")
-        try = util.get_entry(header)
+        test = util.get_entry(header)
         if test != None:
             messages.error(request,"This page already exists")
-            return render(request, "encyclopedia/newpage.html", 
+            return render(request, "encyclopedia/newpage.html", {
             "entries": util.list_entries()
             })
 
+        else:
+            util.save_entry(header,content)
+            entry_new = util.get_entry(header)
+            return redirect("/wiki/"+header)
     else:
-        util.save_entry(header,content)
-        entry_new = util.get_entry(header)
-        return redirect("/wiki/"+title)
-else:
-    header = ""
-    content =""
-    return render(request, "encyclopedia/newpage.html", 
+        header = ""
+        content =""
+        return render(request, "encyclopedia/newpage.html", {
             "entries": util.list_entries()
             })
