@@ -8,9 +8,7 @@
 <!-- UIkit JS -->
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/js/uikit.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/js/uikit-icons.min.js"></script>
-<link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet">
 </head>
-
 
 <body>
 
@@ -47,48 +45,8 @@
     </div>
     </nav>
 
-<h4> Remember to use Markdown format and the header will not go on you page it will be the title of the page. only the content of the page will go on you page.</h4>
-
-    <form action="/newpage" method= "post">
-        <fieldset class="uk-fieldset">
-    
-            {% csrf_token %}
-            
-    <h1>Create a new page</h1>
-            <div class="uk-margin">
-                <input class="uk-input" type="text" name="header" placeholder="Create header for the page">
-            </div>
-    
-            <div class="uk-margin">
-                
-            </div>
-    
-            <div class="uk-margin">
-                <textarea class="uk-textarea" rows="5" name="content" placeholder="Create content for the page"></textarea>
-            </div>
-            <p uk-margin>
-                
-                <button type="submit" class="uk-button uk-button-primary">Submit</button>
-                
-            </p>
-           
-    
-    
-        </fieldset>
-    </form>
-
-
-    {% for messages in messages %}
-
-    <div class="alert alert-success">
-
-        <p class="close" id="help" data-dismiss="alert">This page already exists</p>
-
-            {{message}}
-
-    </div>
-
-{% endfor %}
+ <h1> ERROR</h1>
+<p>Page already exists</p>
 </body>
 
 </html>

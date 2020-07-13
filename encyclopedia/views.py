@@ -39,3 +39,13 @@ def newpage(request):
         return render(request, "encyclopedia/newpage.html", {
             "entries": util.list_entries()
             })
+
+
+def random_page(request):
+    entries = util.list_entries()
+    random_entry = random.choice(entries)
+    return redirect("/wiki/"+random_entry)
+
+def error(request):
+    return render(request, "encyclopedia/error.html", 
+    )
