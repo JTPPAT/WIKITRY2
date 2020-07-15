@@ -15,7 +15,8 @@ def entry(request, entry):
     markdown = util.get_entry(entry)
     markdown_code = util.get_entry(entry)
     converted_code = markdown2.markdown(markdown_code)
-    return render(request, 'encyclopedia/title.html', {'content' : converted_code }
+    return render(request, 'encyclopedia/title.html', {'content' : converted_code,  "title": entry
+        } 
     
 )
 def newpage(request):
@@ -49,3 +50,34 @@ def random_page(request):
 def error(request):
     return render(request, "encyclopedia/error.html", 
     )
+
+def editpage1(request, title):
+    if request.method == "POST":
+        title = request.POST.get("title")
+        content = request.POST.get("content")
+        util.save_entry(title,content)
+        return redirect("/wiki/"+title)
+    else:
+        return render(request, "encyclopedia/editpage.html",{
+        "title": entry
+        })
+
+def editpage2(request, title):
+    title = request.POST.get("title")
+    content = request.POST.get("content")
+    header = util.get_entry(title)
+    content = util.get_entry(entry)
+    return render(request, "encyclopedia/editpage.html",{
+        "header": title,
+        "content": content
+        })
+
+
+
+def search(request):
+    title = request.POST.get("title")
+    content = request.POST.get("content")
+    util.get_entry(title)
+    return render(request, "encyclopedia/search.html", {
+        "entries": util.list_entries()
+    })

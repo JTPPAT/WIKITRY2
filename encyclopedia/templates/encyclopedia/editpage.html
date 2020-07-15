@@ -45,14 +45,14 @@
     </div>
     </nav>
 
-    <form action="newmd.html">
+    <form action= "{% url 'editpage1'%}">
         <fieldset class="uk-fieldset">
     
             {% csrf_token %}
             
     <h1>Edit Page</h1>
             <div class="uk-margin">
-                <input class="uk-input" type="text" placeholder="Create header for the page">
+                <input class="uk-input" type="text" value="{{ header }}" placeholder=" header for the page">
             </div>
     
             <div class="uk-margin">
@@ -60,11 +60,13 @@
             </div>
     
             <div class="uk-margin">
-                <textarea class="uk-textarea" rows="5" placeholder="Create content for the page"></textarea>
+                <textarea class="uk-textarea" rows="5" placeholder=" content for the page"> {{ content }} </textarea>
             </div>
     
-           
-    
+            <p uk-margin>
+                <button type="submit" value="save changes" class="uk-button uk-button-default">Edit page</button>
+            </p>
+            
     
         </fieldset>
     </form>

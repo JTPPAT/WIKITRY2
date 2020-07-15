@@ -1,11 +1,13 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
+    <link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/css/uikit.min.css" />
 
-    <!-- UIkit JS -->
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/js/uikit.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/js/uikit-icons.min.js"></script>
+<!-- UIkit JS -->
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/js/uikit-icons.min.js"></script>
 </head>
 
 <body>
@@ -43,42 +45,13 @@
     </div>
     </nav>
 
-{{content|safe}}
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-
-
-
-
-<p uk-margin>
-    <button type="submit"  href= "{% url 'editpage2' entry%}" class="uk-button uk-button-default">Edit page</button>
-</p>
+    <ul>
+        
+        <a><li>{{ entry }}</li></a>
+     
+    </ul>
 
 </body>
-
-
-</html>
-
-
-
-
-
-
-
-
-
-
-
 
 </html>
