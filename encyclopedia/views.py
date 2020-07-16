@@ -4,7 +4,8 @@ from django.shortcuts import redirect
 import markdown2
 import random
 from . import util
-
+from django.urls import reverse
+from django.http import HttpResponseRedirect
 
 def index(request):
     return render(request, "encyclopedia/index.html", {
@@ -54,10 +55,10 @@ def error(request):
 def editpage1(request, title):
     global entry
     if request.method == "POST":
-        entry = request.POST.get("title")
+        title = request.POST.get("title")
         content = request.POST.get("content")
-        util.save_entry(title,content)
-        return redirect("/wiki/"+title)
+        util.save_entry(entry,content)
+        return HttpResponseRedirect(reverse("/wiki/"+title))
     else:
         return render(request, "encyclopedia/editpage.html",{
         "content": entry,
