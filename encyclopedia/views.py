@@ -57,7 +57,7 @@ def editpage1(request, title):
     if request.method == "POST":
         title = request.POST.get("title")
         content = request.POST.get("content")
-        util.save_entry(entry,content)
+        util.save_entry(title,content)
         return HttpResponseRedirect(reverse("/wiki/"+title))
     else:
         return render(request, "encyclopedia/editpage.html",{
