@@ -45,7 +45,7 @@
     </div>
     </nav>
 
-    <form action= "{% url 'editpage1'%}">
+    <form action= "{% url 'editpage1' entry%}">
         <fieldset class="uk-fieldset">
     
             {% csrf_token %}
@@ -64,7 +64,7 @@
             </div>
     
             <p uk-margin>
-                <button type="submit" value="save changes" class="uk-button uk-button-default">Edit page</button>
+                <button type="submit" value="save changes" class="uk-button uk-button-default">Save</button>
             </p>
             
     

@@ -15,7 +15,7 @@ def entry(request, entry):
     markdown = util.get_entry(entry)
     markdown_code = util.get_entry(entry)
     converted_code = markdown2.markdown(markdown_code)
-    return render(request, 'encyclopedia/title.html', {'content' : converted_code,  "title": entry
+    return render(request, 'encyclopedia/title.html', {'content' : converted_code,  "entry": entry
         } 
     
 )
@@ -53,23 +53,21 @@ def error(request):
 
 def editpage1(request, title):
     if request.method == "POST":
-        title = request.POST.get("title")
+        entry = request.POST.get("title")
         content = request.POST.get("content")
         util.save_entry(title,content)
         return redirect("/wiki/"+title)
     else:
         return render(request, "encyclopedia/editpage.html",{
-        "title": entry
+        "entry": entry
         })
 
 def editpage2(request, title):
-    title = request.POST.get("title")
-    content = request.POST.get("content")
     entry = util.get_entry(title)
-    content = util.get_entry(entry)
     return render(request, "encyclopedia/editpage.html",{
-        "content": content,
-        "entry": title 
+        "content": entry,
+        "entry": title,
+        "header" : title
         })
 
 
