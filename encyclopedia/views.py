@@ -52,6 +52,7 @@ def error(request):
     )
 
 def editpage1(request, title):
+    global entry
     if request.method == "POST":
         entry = request.POST.get("title")
         content = request.POST.get("content")
@@ -59,7 +60,9 @@ def editpage1(request, title):
         return redirect("/wiki/"+title)
     else:
         return render(request, "encyclopedia/editpage.html",{
-        "entry": entry
+        "content": entry,
+        "entry": title,
+        "header" : title
         })
 
 def editpage2(request, title):
