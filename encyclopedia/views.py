@@ -65,11 +65,11 @@ def editpage1(request, title):
 def editpage2(request, title):
     title = request.POST.get("title")
     content = request.POST.get("content")
-    header = util.get_entry(title)
+    entry = util.get_entry(title)
     content = util.get_entry(entry)
     return render(request, "encyclopedia/editpage.html",{
-        "header": title,
-        "content": content
+        "content": content,
+        "entry": title 
         })
 
 
