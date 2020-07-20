@@ -35,16 +35,16 @@
                 <div><a href="{% url 'newpage' %}">Create New Page</a></div>
             </div>
             <div class="uk-navbar-item">
-                <form action="javascript:void(0)">
+                <form action="{% url 'search' %}">
                     <input  class="uk-input uk-form-width-medium" class="uk-input uk-form-width-small" type="text" placeholder="Search Encyclopedia" name="q">
-                    <button  type= submit class="uk-button uk-button-default">Submit</button>
+                    <button  type= "submit" class="uk-button uk-button-default">Submit</button>
                 </form>
             </div>
     
         </div>
     </div>
     </nav>
-
+    <h4> Remember to use Markdown format.</h4>
     <form action= "{% url 'editpage1' entry%}" method="post">
         <fieldset class="uk-fieldset">
     
@@ -52,7 +52,7 @@
             
     <h1>Edit Page</h1>
             <div class="uk-margin">
-                <input class="uk-input" type="text" name="title" placeholder=" header for the page">
+                <input type="hidden" class="uk-input" type="text" value="{{header}}" name="title" placeholder=" header for the page">
             </div>
     
             <div class="uk-margin">
@@ -60,7 +60,7 @@
             </div>
     
             <div class="uk-margin">
-                <textarea class="uk-textarea" name="content" rows="5" placeholder=" content for the page"> {{ content }} </textarea>
+                <textarea class="uk-textarea" name="content" rows="5" placeholder=" content for the page">{{ content }}</textarea>
             </div>
     
             <p uk-margin>

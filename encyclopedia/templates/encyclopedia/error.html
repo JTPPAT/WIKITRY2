@@ -35,7 +35,7 @@
                 <div><a href="{% url 'newpage' %}">Create New Page</a></div>
             </div>
             <div class="uk-navbar-item">
-                <form action="javascript:void(0)">
+                <form action="">
                     <input  class="uk-input uk-form-width-medium" class="uk-input uk-form-width-small" type="text" placeholder="Search Encyclopedia" name="q">
                     <button  type= submit class="uk-button uk-button-default">Submit</button>
                 </form>
@@ -46,7 +46,7 @@
     </nav>
 
  <h1> ERROR</h1>
-<p>Page already exists</p>
+<p>{{error}}</p>
 </body>
 
 </html>

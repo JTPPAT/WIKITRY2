@@ -33,9 +33,9 @@
                 <div><a href="{% url 'newpage' %}">Create New Page</a></div>
             </div>
             <div class="uk-navbar-item">
-                <form action="javascript:void(0)">
+                <form action="{% url 'search' %}">
                     <input  class="uk-input uk-form-width-medium" class="uk-input uk-form-width-small" type="text" placeholder="Search Encyclopedia" name="q">
-                    <button  type= submit class="uk-button uk-button-default">Submit</button>
+                    <button  type= "submit" class="uk-button uk-button-default">Submit</button>
                 </form>
             </div>
     
@@ -63,6 +63,7 @@
 <form action="{% url 'editpage2' entry%}">
 <p uk-margin>
     <button type="submit" class="uk-button uk-button-default">Edit page</button>
+    
 </p>
 </form>
 </body>

@@ -13,11 +13,17 @@ def index(request):
     })
 
 def entry(request, entry):
-    markdown = util.get_entry(entry)
     markdown_code = util.get_entry(entry)
-    converted_code = markdown2.markdown(markdown_code)
-    return render(request, 'encyclopedia/title.html', {'content' : converted_code,  "entry": entry
-        } 
+    if markdown_code is None:
+        return render(request, 'encyclopedia/error.html',{
+            "error": "The page you are looking for does not exist"
+
+        })
+    else:    
+        markdown_code = util.get_entry(entry)
+        converted_code = markdown2.markdown(markdown_code)
+        return render(request, 'encyclopedia/title.html', {'content' : converted_code,  "entry": entry
+            } 
     
 )
 def newpage(request):
@@ -77,9 +83,23 @@ def editpage2(request, title):
 
 
 def search(request):
-    title = request.POST.get("title")
-    content = request.POST.get("content")
-    util.get_entry(title)
-    return render(request, "encyclopedia/search.html", {
-        "entries": util.list_entries()
-    })
+    if request.method =='POST':
+        response = request.POST["q"]
+        text = util.get_entry(response)
+        if text:
+             return HttpResponseRedirect("wiki/"+response)
+        else:
+            entries = util.list_entries()
+            search_entries = [i for i in entries if response in i]
+            if search_entries:
+                return render(request, 'encyclopedia/index.html',{  
+                    "entries": search_entries
+
+                })
+            else:
+                return render(request, "encyclopedia/error.html",{
+                    "error": "The page you are looking for does not exist"
+
+
+                })
+        
