@@ -35,16 +35,16 @@
                 <div><a href="{% url 'newpage' %}">Create New Page</a></div>
             </div>
             <div class="uk-navbar-item">
-                <form action="">
+                <form action="{% url 'search' %}" method="post">
+                    {% csrf_token %}
                     <input  class="uk-input uk-form-width-medium" class="uk-input uk-form-width-small" type="text" placeholder="Search Encyclopedia" name="q">
-                    <button  type= submit class="uk-button uk-button-default">Submit</button>
+                    <button  type= "submit" class="uk-button uk-button-default">Submit</button>
                 </form>
             </div>
     
         </div>
     </div>
     </nav>
-
  <h1> ERROR</h1>
 <p>{{error}}</p>
 </body>

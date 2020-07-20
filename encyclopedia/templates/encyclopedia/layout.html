@@ -41,7 +41,8 @@
                     <div><a href="{% url 'newpage' %}">Create New Page</a></div>
                 </div>
                 <div class="uk-navbar-item">
-                    <form action="{% url 'search' %}">
+                    <form action="{% url 'search' %}" method="post">
+                        {% csrf_token %}
                         <input  class="uk-input uk-form-width-medium" class="uk-input uk-form-width-small" type="text" placeholder="Search Encyclopedia" name="q">
                         <button  type= "submit" class="uk-button uk-button-default">Submit</button>
                     </form>
@@ -51,10 +52,7 @@
         </div>
         </nav>
 
-        <div class="uk-background-image@m uk-background-cover uk-background-muted uk-height-medium uk-width-large uk-flex uk-flex-center uk-flex-middle" style="background-image: url(static/wikiimage.jpg);">
-            <p class="uk-h4 uk-margin-remove uk-visible@m uk-light">WIKI</p>
-            <p class="uk-h4 uk-margin-remove uk-hidden@m">WIKI</p>
-        </div>
+
            
             
                 {% block nav %}
